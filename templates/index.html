@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Home </title>
+
+    <style>
+        div.a { font-size: 70px; color:red; text-align:center; margin-top:100px }
+        .b { background-color: PINK}
+    </style>
+</head>
+<body class="b">
+
+<div class="a"> Welcome To Car Price Prediction </div> <br>
+
+    <form action="{% url 'result' %}">
+        {% csrf_token %}
+        <br><br>
+        <table align="center">
+            <tr>
+                <td>
+                    <label for="company"><b>Select company:</b></label>
+                </td>
+                <td>
+                    <select id="company" name="company" required>
+                            {% for company in companies %}
+                            <option value="{{ company }}">{{ company }}</option>
+                            {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <label for="car_models"><b>Select model:</b></label>
+                </td>
+                <td>
+                    <select id="car_models" name="car_models" required>
+                            {% for model in car_models %}
+                            <option value="{{ model }}">{{ model }}</option>
+                            {% endfor %}
+                        </select>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <label for="year"><b>Select Year of Purchase:</b></label>
+                </td>
+                <td>
+                    <select id="year" name="year" required>
+                            {% for year in years %}
+                            <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <label for="fuel_type"><b>Select Fuel Type:</b></label>
+                </td>
+                <td>
+                    <select id="fuel_type" name="fuel_type" required>
+                            {% for fuel_type in fuel_types %}
+                            <option value="{{ fuel_type }}">{{ fuel_type }}</option>
+                            {% endfor %}
+                        </select>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                   <label for="kilo_driven"><b>Enter Number of Kilometres that car has travelled:</b></label>
+                </td>
+                <td>
+                    <input type="text" id="kilo_driven" name="kilo_driven" required>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Predict">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</body>
+</html>
